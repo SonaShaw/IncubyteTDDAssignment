@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 
-
-
 class StringCalculatorTest {
 
 	//===========Test fot point 1  (handle basic string)
@@ -55,5 +53,45 @@ class StringCalculatorTest {
 		res = stringCalculator.Add(numbers);
 		assertEquals(res, 9756214);
 	}
+	
+	//Test for Allow the Add method to handle new lines between numbers (instead of commas).
+	@Test
+	void handleNewLinesBetweenNumbersTests() {
+		StringCalculator stringCalculator = new StringCalculator();
+		String numbers = "1\n2,3";
+		int res = stringCalculator.Add(numbers);
+		assertEquals(res, 6);
+		
+		numbers = "45\n5,,1,";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, 51);
+		
+		numbers = "45,50\n50,,1,";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, 146);
+		
+		// -1 denotes --> Invalid input
+		numbers = "1,\n";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+		
+		numbers = "1,\n,45,5";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+		
+		numbers = "\n45,,1,";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+		
+		numbers = "45,50\n,,1,";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+		
+		numbers = "45,50,,\n,,1,";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+		
+	}
+	
 
 }
