@@ -145,6 +145,8 @@ class StringCalculatorTest {
 			
 	}
 	
+	
+	//Test to support Add method to ignore number greater than 1000
 	@Test
 	void numberGreaterThan_1000_Tests() {
 		StringCalculator stringCalculator = new StringCalculator();
@@ -157,6 +159,8 @@ class StringCalculatorTest {
 		assertEquals(res, 0);
 	}
 	
+	
+	//Test to support Add method to support delimeter of any length
 	@Test
 	void anyLengthDelimeterTests() {
 		StringCalculator stringCalculator = new StringCalculator();
