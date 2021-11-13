@@ -45,7 +45,8 @@ public class StringCalculator {
 							isNegativeValue = true;
 						negativeValues = negativeValues+value+" ";
 					}
-					sum = sum + value;
+					if(value<=1000)
+						sum = sum + value;
 				}	
 			}
 			if(isNegativeValue)

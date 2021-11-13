@@ -37,21 +37,21 @@ class StringCalculatorTest {
 	@Test
 	void unownAmountofNumberstests() {
 		StringCalculator stringCalculator = new StringCalculator();
-		String numbers = "5000,50000";
+		String numbers = "500,500";
 		int res = stringCalculator.Add(numbers);
-		assertEquals(res, 55000);
+		assertEquals(res, 1000);
 		
-		numbers = "100000,100000";
+		numbers = "250,150";
 		res = stringCalculator.Add(numbers);
-		assertEquals(res, 200000);
+		assertEquals(res, 400);
 		
-		numbers = "678951,8963213";
+		numbers = "550,350";
 		res = stringCalculator.Add(numbers);
-		assertEquals(res, 9642164);
+		assertEquals(res, 900);
 		
-		numbers = "789001,8967213";
+		numbers = "900,950";
 		res = stringCalculator.Add(numbers);
-		assertEquals(res, 9756214);
+		assertEquals(res, 1850);
 	}
 	
 	//Test for Allow the Add method to handle new lines between numbers (instead of commas).
@@ -143,6 +143,18 @@ class StringCalculatorTest {
 		res = stringCalculator.Add(numbers);
 		assertEquals(res, -1);
 			
+	}
+	
+	@Test
+	void numberGreaterThan_1000_Tests() {
+		StringCalculator stringCalculator = new StringCalculator();
+		String numbers = "//;\n1;100000;90";
+		int res = stringCalculator.Add(numbers);
+		assertEquals(res, 91);
+			
+		numbers = "//;\n;100000;0;;;;10976";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, 0);
 	}
 
 }
