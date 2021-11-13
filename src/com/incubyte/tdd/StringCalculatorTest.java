@@ -66,6 +66,10 @@ class StringCalculatorTest {
 		res = stringCalculator.Add(numbers);
 		assertEquals(res, 51);
 		
+		numbers = "50\n50,,1\n1,,1,";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, 103);
+		
 		numbers = "45,50\n50,,1,";
 		res = stringCalculator.Add(numbers);
 		assertEquals(res, 146);
@@ -91,6 +95,9 @@ class StringCalculatorTest {
 		res = stringCalculator.Add(numbers);
 		assertEquals(res, -1);
 		
+		numbers = "45,\n,50,,\n,,1,";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
 	}
 	
 
