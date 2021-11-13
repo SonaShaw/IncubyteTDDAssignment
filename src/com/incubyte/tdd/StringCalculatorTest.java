@@ -156,5 +156,22 @@ class StringCalculatorTest {
 		res = stringCalculator.Add(numbers);
 		assertEquals(res, 0);
 	}
+	
+	@Test
+	void anyLengthDelimeterTests() {
+		StringCalculator stringCalculator = new StringCalculator();
+		String numbers = "//##\n1#2#3";
+		int res = stringCalculator.Add(numbers);
+		assertEquals(res, 6);
+			
+		numbers = "//#####\n####100#####200###300##";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, 600);
+		
+		numbers = "//#####\n##100#####200###300####400";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, 1000);
+	}
+	
 
 }

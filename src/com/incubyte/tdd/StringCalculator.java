@@ -12,8 +12,9 @@ public class StringCalculator {
 		String delimeter = ",";
 		
 		if(n>=2 && numbers.substring(0,2).equals("//")) {
+			int index = numbers.indexOf("\n");
 			delimeter = numbers.charAt(2)+"";
-			numbers = numbers.substring(4, numbers.length());
+			numbers = numbers.substring(index+1, numbers.length());
 		}
 		
 		int newLineIndex = numbers.indexOf("\n");
