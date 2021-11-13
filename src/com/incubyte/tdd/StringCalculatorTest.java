@@ -98,7 +98,51 @@ class StringCalculatorTest {
 		numbers = "45,\n,50,,\n,,1,";
 		res = stringCalculator.Add(numbers);
 		assertEquals(res, -1);
+		
+		numbers = "45,\n\n,50,,\n,\n\n,1,";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
 	}
 	
+	//Test for Allow the Add method to support multiple delimeters.
+	@Test
+	void supportDifferentDelimeterTests() {
+		StringCalculator stringCalculator = new StringCalculator();
+		String numbers = "//;\n1;200;99";
+		int res = stringCalculator.Add(numbers);
+		assertEquals(res, 300);
+		
+		numbers = "//;\n1;200;50\n\n10;120";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, 381);
+		
+		//returns -1 that means invalid input because "\n" is not present between numbers
+		numbers = "//;\n1;200;50\n;10;120";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+		
+		numbers = "//;\n1;200;50\n,10;120";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+		
+		numbers = "//;\n1;200;50\n\n,10;120";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+	}
+	
+	
+	//Test to support Calling Add with a negative number will throw an exception "negatives not allowed" - and the negative that was passed.
+	@Test
+	void callingWithNegativeNumberTests() {
+		StringCalculator stringCalculator = new StringCalculator();
+		String numbers = "//;\n1;-2;-9";
+		int res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+		
+		numbers = "-10,5\n7,89,,,,9,-78";
+		res = stringCalculator.Add(numbers);
+		assertEquals(res, -1);
+			
+	}
 
 }
